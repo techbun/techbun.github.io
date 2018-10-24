@@ -15,23 +15,20 @@
         return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
     function ccell(r, g, b) {
-        var td = document.createElement('td');
+        var td = document.createElement('div');
         td.style.backgroundColor = "rgb(" + r +", "+ g +", "+ b +")";
         td.appendChild(document.createTextNode(' '));
         return td;
     }
     function crow(r, g, b) {
-        var tr = document.createElement('tr');
+        var tr = document.createElement('div');
         tr.appendChild(ccell(r, g, b));
         return tr;
     }
     function ctable(r, g, b) {
-        var tbl = document.createElement('table');
-        tbl.cellSpacing = '0';
-        tbl.cellPadding = '0';
-        tbl.appendChild(document.createElement('tbody'));
+        var tbl = document.createElement('div');
         for(var i = 0; i < 16; i++) {
-            tbl.tBodies[0].appendChild(crow( r == -1 ? i * 16 : r, g == -1 ? i * 16 : g, b == -1 ? i * 16 : b));
+            tbl.appendChild(crow( r == -1 ? i * 16 : r, g == -1 ? i * 16 : g, b == -1 ? i * 16 : b));
         }
         return tbl;
     }
